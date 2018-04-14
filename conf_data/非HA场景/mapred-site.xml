@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <!-- 指定MR资源调度方式 -->  
+    <property>  
+        <name>mapreduce.framework.name</name>  
+        <value>yarn</value>  
+        <description>The runtime framework for executing MapReduce jobs. Can be one of local, classic or yarn.</description>  
+    </property>
+    
+    <!-- MR默认需要的资源数 -->  
+    <property>  
+        <name>yarn.app.mapreduce.am.resource.mb</name>  
+        <value>1536</value>  
+        <description>The amount of memory the MR AppMaster needs.</description>  
+    </property>
+    <property>  
+        <name>yarn.app.mapreduce.am.resource.cpu-vcores</name>  
+        <value>1</value>  
+        <description>The number of virtual CPU cores the MR AppMaster needs.</description>  
+    </property>
+    
+    <!-- 日志收集 -->
+    <!-- <property>
+        <name>mapreduce.jobtracker.address</name>
+        <value>node-01:9001</value>
+   </property> -->
+</configuration>

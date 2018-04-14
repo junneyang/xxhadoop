@@ -1,0 +1,26 @@
+1389990045,http://www.163.com,2000
+1385566005,http://www.163.com,2000
+1385566005,http://www.163.com,2000
+1389990045,http://www.163.com,2000
+1390876045,http://www.163.com,2000
+1385566005,http://www.163.com,2000
+1390876045,http://www.163.com,2000
+1390876045,http://www.163.com,2000
+1389990045,http://www.163.com,2000
+
+select myfunction(nbr),url,flow from t_flow;
+
+
+1389990045	beijing	http://www.163.com	2000
+1385566005,beijing	http://www.163.com	2000
+1385566005,beijing	http://www.163.com	2000
+1389990045,tianjing,http://www.163.com,2000
+1390876045,tianjing,http://www.163.com,2000
+1385566005,tianjing,http://www.163.com,2000
+1390876045,beijing,http://www.163.com,2000
+1390876045,nanjing,http://www.163.com,2000
+1389990045,nanjing,http://www.163.com,2000
+
+
+
+

@@ -1,0 +1,26 @@
+1.上传hive安装包
+
+2.解压
+
+3.配置Hive(在一台机器上即可)
+	mv hive-env.sh.template hive-env.sh
+4.运行hive
+	发现内置默认的metastore存在问题（1.换执行路径后，原来的表不存在了。2.只能有一个用户访问同一个表）
+	
+5.配置mysql的metastore
+	5.1上传两个mysql的rpm包
+	
+	rpm -qa | grep mysql
+	rpm -e mysql-libs-5.1.66-2.el6_3.i686 --nodeps
+	rpm -ivh MySQL-server-5.1.73-1.glibc23.i386.rpm 
+	rpm -ivh MySQL-client-5.1.73-1.glibc23.i386.rpm 
+	配置mysql
+	/usr/bin/mysql_secure_installation
+	授权
+	GRANT ALL PRIVILEGES ON test.* TO 'root'@'%' IDENTIFIED BY '123' WITH GRANT OPTION;
+	FLUSH PRIVILEGES
+	
+	5.2将hive的metastore设置为mysql
+	
+	
+	load data local inpath '/root/itcast.log' into table itcast;

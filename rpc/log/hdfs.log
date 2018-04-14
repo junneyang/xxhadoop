@@ -1,0 +1,55 @@
+[WARN ] 2017-10-17 14:19:24.368 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-10-17 14:19:25.495 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:26.496 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:27.497 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:28.499 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:29.505 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:30.506 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:31.508 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 6 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:32.510 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 7 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:33.511 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 8 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:34.513 [] [] [main] org.apache.hadoop.ipc.Client$Connection.handleConnectionFailure(Client.java:872) Retrying connect to server: node-01/10.20.0.11:8888. Already tried 9 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+[INFO ] 2017-10-17 14:19:55.913 [] [] [main] org.apache.hadoop.ipc.CallQueueManager.<init>(CallQueueManager.java:57) Using callQueue: class java.util.concurrent.LinkedBlockingQueue queueCapacity: 100
+[INFO ] 2017-10-17 14:19:56.061 [] [] [Socket Reader #1 for port 8888] org.apache.hadoop.ipc.Server$Listener$Reader.run(Server.java:722) Starting Socket Reader #1 for port 8888
+[WARN ] 2017-10-17 14:19:56.189 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-10-17 14:19:56.212 [] [] [main] com.xcompany.xproject.rpc.HelloServer.main(HelloServer.java:33) Server start to listen on 8888
+[INFO ] 2017-10-17 14:19:56.213 [] [] [IPC Server Responder] org.apache.hadoop.ipc.Server$Responder.run(Server.java:962) IPC Server Responder: starting
+[INFO ] 2017-10-17 14:19:56.215 [] [] [IPC Server listener on 8888] org.apache.hadoop.ipc.Server$Listener.run(Server.java:801) IPC Server listener on 8888: starting
+[WARN ] 2017-10-17 14:20:04.213 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-10-17 14:20:04.405 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) JunneYang
+[INFO ] 2017-10-17 14:20:04.418 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) Ares
+[WARN ] 2017-10-17 14:20:33.896 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-10-17 14:20:34.049 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) JunneYang
+[INFO ] 2017-10-17 14:20:34.057 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) Ares
+[WARN ] 2017-10-17 14:21:43.844 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-10-17 14:21:43.990 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) JunneYang
+[INFO ] 2017-10-17 14:21:43.997 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:34) Hello JunneYang
+[INFO ] 2017-10-17 14:21:43.999 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) Ares
+[INFO ] 2017-10-17 14:21:44.005 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:36) Hello Ares
+[WARN ] 2017-10-17 17:42:55.530 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-10-17 17:42:55.728 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) JunneYang
+[INFO ] 2017-10-17 17:42:55.735 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:34) Hello JunneYang
+[INFO ] 2017-10-17 17:42:55.737 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) Ares
+[INFO ] 2017-10-17 17:42:55.738 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:36) Hello Ares
+[INFO ] 2017-11-06 13:43:01.607 [] [] [main] org.apache.hadoop.ipc.CallQueueManager.<init>(CallQueueManager.java:57) Using callQueue: class java.util.concurrent.LinkedBlockingQueue queueCapacity: 100
+[INFO ] 2017-11-06 13:43:01.922 [] [] [Socket Reader #1 for port 8888] org.apache.hadoop.ipc.Server$Listener$Reader.run(Server.java:722) Starting Socket Reader #1 for port 8888
+[WARN ] 2017-11-06 13:43:02.168 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-11-06 13:43:02.197 [] [] [main] com.xcompany.xproject.rpc.HelloServer.main(HelloServer.java:33) Server start to listen on 8888
+[INFO ] 2017-11-06 13:43:02.197 [] [] [IPC Server Responder] org.apache.hadoop.ipc.Server$Responder.run(Server.java:962) IPC Server Responder: starting
+[INFO ] 2017-11-06 13:43:02.199 [] [] [IPC Server listener on 8888] org.apache.hadoop.ipc.Server$Listener.run(Server.java:801) IPC Server listener on 8888: starting
+[WARN ] 2017-11-06 13:43:23.212 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-11-06 13:43:23.462 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) JunneYang
+[INFO ] 2017-11-06 13:43:23.470 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:34) Hello JunneYang
+[INFO ] 2017-11-06 13:43:23.475 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:19) Ares
+[INFO ] 2017-11-06 13:43:23.476 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:36) Hello Ares
+[INFO ] 2017-12-08 10:31:32.239 [] [] [main] org.apache.hadoop.ipc.CallQueueManager.<init>(CallQueueManager.java:57) Using callQueue: class java.util.concurrent.LinkedBlockingQueue queueCapacity: 100
+[INFO ] 2017-12-08 10:31:32.875 [] [] [Socket Reader #1 for port 8888] org.apache.hadoop.ipc.Server$Listener$Reader.run(Server.java:722) Starting Socket Reader #1 for port 8888
+[WARN ] 2017-12-08 10:31:33.401 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-12-08 10:31:33.470 [] [] [main] com.xcompany.xproject.rpc.HelloServer.main(HelloServer.java:32) Server start to listen on 8888
+[INFO ] 2017-12-08 10:31:33.486 [] [] [IPC Server listener on 8888] org.apache.hadoop.ipc.Server$Listener.run(Server.java:801) IPC Server listener on 8888: starting
+[INFO ] 2017-12-08 10:31:33.487 [] [] [IPC Server Responder] org.apache.hadoop.ipc.Server$Responder.run(Server.java:962) IPC Server Responder: starting
+[WARN ] 2017-12-08 10:31:50.842 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-12-08 10:31:51.734 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:18) JunneYang
+[INFO ] 2017-12-08 10:31:51.761 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:34) Hello JunneYang
+[INFO ] 2017-12-08 10:31:51.763 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:18) Ares
+[INFO ] 2017-12-08 10:31:51.766 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:36) Hello Ares

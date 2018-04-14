@@ -1,0 +1,11 @@
+[INFO ] 2017-12-08 10:31:32.239 [] [] [main] org.apache.hadoop.ipc.CallQueueManager.<init>(CallQueueManager.java:57) Using callQueue: class java.util.concurrent.LinkedBlockingQueue queueCapacity: 100
+[INFO ] 2017-12-08 10:31:32.875 [] [] [Socket Reader #1 for port 8888] org.apache.hadoop.ipc.Server$Listener$Reader.run(Server.java:722) Starting Socket Reader #1 for port 8888
+[WARN ] 2017-12-08 10:31:33.401 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-12-08 10:31:33.470 [] [] [main] com.xcompany.xproject.rpc.HelloServer.main(HelloServer.java:32) Server start to listen on 8888
+[INFO ] 2017-12-08 10:31:33.486 [] [] [IPC Server listener on 8888] org.apache.hadoop.ipc.Server$Listener.run(Server.java:801) IPC Server listener on 8888: starting
+[INFO ] 2017-12-08 10:31:33.487 [] [] [IPC Server Responder] org.apache.hadoop.ipc.Server$Responder.run(Server.java:962) IPC Server Responder: starting
+[WARN ] 2017-12-08 10:31:50.842 [] [] [main] org.apache.hadoop.util.NativeCodeLoader.<clinit>(NativeCodeLoader.java:62) Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO ] 2017-12-08 10:31:51.734 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:18) JunneYang
+[INFO ] 2017-12-08 10:31:51.761 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:34) Hello JunneYang
+[INFO ] 2017-12-08 10:31:51.763 [] [] [IPC Server handler 0 on 8888] com.xcompany.xproject.rpc.HelloServer.helloMethod(HelloServer.java:18) Ares
+[INFO ] 2017-12-08 10:31:51.766 [] [] [main] com.xcompany.xproject.rpc.HelloClient.testHello(HelloClient.java:36) Hello Ares

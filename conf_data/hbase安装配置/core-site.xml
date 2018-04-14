@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <!-- 指定namenode的主机名和端口号，此处的端口号需要和hdfs-site.xml的dfs.namenode.rpc-address配置的端口相同 -->
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://node-01:9000</value>
+        <description>The name of the default file system.</description>
+    </property>
+    <!-- 配置hadoop的临时目录，我们不需要把这个目录创建出来, 这里的路径默认是NameNode,DataNode,JournalNode等存放数据的公共目录-->  
+    <property>  
+        <name>hadoop.tmp.dir</name>  
+        <value>/home/xxproject/data/hadoop/tmp</value>  
+        <description>A base for other temporary directories.</description>    
+    </property>
+</configuration>
