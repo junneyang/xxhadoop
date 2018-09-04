@@ -1,6 +1,6 @@
 # xxhadoop
 Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code/Demo. Don't fork, Just star !
-![image](data_analyze.jpg)
+![image](data_analyze.png)
 
 ## 几个概念
 - BI: 包括ETL（数据的抽取、转换、加载），数据仓库（Data Warehouse），OLAP（联机分析处理），数据挖掘（Data Mining）等技术。
