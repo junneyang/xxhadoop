@@ -144,3 +144,4 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - 数据分析必备｜你不得不知道的11款数据分析工具：http://www.woshipm.com/pmd/314444.html
 - OLAP及分析工具选型：https://blog.csdn.net/spirit_zyl/article/details/59117744
 - presto、druid、sparkSQL、kylin的对比分析，如性能、架构等，有什么异同：https://www.zhihu.com/question/41541395
+- 使用graphite来监控业务系统：https://www.jianshu.com/p/3d98196c4290
