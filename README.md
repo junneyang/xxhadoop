@@ -34,7 +34,6 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - 多维分析:    Druid/Kylin
 
 ### 实时分析
-- Splunk：用于机器生成的数据的分析
 - RDB：MySQL/PostgreSQL/Oracle方案，或者GreenPlum方案。[参考资料](https://yq.aliyun.com/articles/405191)
 - Druid: Druid的很多设计思想来源于Google的秘密分析武器PowerDrill，从功能上，和Apache开源的Dremel也有几分相似。
 - Pinot：与Druid最接近的系统，Linkedin于2015年底开源的一个分布式列式数据存储系统。
@@ -44,6 +43,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - ElasticSearch：Elastic公司推出的一个基于Lucene的分布式搜索服务系统，它是一个高可靠、可扩展、分布式的全文搜索引擎。ES在前几年的定位一直是文本的倒排索引引擎，用于文本搜索的场景。最近几年，Elastic公司将ES用于日志分析和数据的可视化，慢慢转成一个数据分析平台。
 - Kudu：支持快速分析的新型Hadoop存储系统，一般联合Impala的SQL一起使用，[官网](http://kudu.apache.org/)    
 ~~- Crate：开源大数据存储，因为Elasticsearch性能实在太出众了，但是dsl接口不好使。有人拿Elasticsearch做为底层，上层封装了一个SQL接口，从何正式变成了一种数据库，叫 http://crate.io~~
+- Splunk：用于机器生成的数据的分析
 
 ### SQL On Hadoop方案
 - Hive/SparkSQL
