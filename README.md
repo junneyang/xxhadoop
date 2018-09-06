@@ -26,6 +26,13 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - Prometheus：一种时间序列数据库和服务监测系统
 - Heroic：基于Cassandra和Elasticsearch的可扩展的时间序列数据库
 
+### 数据存储
+- 经典数据仓库: HDFS + ORC/Parqet + Hive/SparkSQL
+- 实时数据仓库: HDFS + Kudu + Impala
+- 在线分析:    HDFS + HBase + Phoenix
+- 时序分析:    OpenTSDB/InfluxDB/Prometheus
+- 多维分析:    Druid/Kylin
+
 ### 实时分析
 - Splunk：用于机器生成的数据的分析
 - RDB：MySQL/PostgreSQL/Oracle方案，或者GreenPlum方案。[参考资料](https://yq.aliyun.com/articles/405191)
