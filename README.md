@@ -35,7 +35,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 
 ### 实时分析
 - RDB：MySQL/PostgreSQL/Oracle方案，或者GreenPlum方案。[参考资料](https://yq.aliyun.com/articles/405191)
-- Druid: Druid的很多设计思想来源于Google的秘密分析武器PowerDrill，从功能上，和Apache开源的Dremel也有几分相似。
+- Druid: Druid的很多设计思想来源于Google的秘密分析武器PowerDrill，从功能上，和Apache开源的Dremel也有几分相似。[参考资料](https://www.outlyer.com/blog/top10-open-source-time-series-databases/)
 - Pinot：与Druid最接近的系统，Linkedin于2015年底开源的一个分布式列式数据存储系统。
 - Kylin：Apache开源的分布式分析引擎，提供了Hadoop之上的SQL查询接口及多维分析（OLAP）能力，可以支持超大规模数据。最初由eBay公司开发并于2015年贡献至开源社区。它能在亚秒内查询巨大的Hive表。Kylin, Mondrian, Saiku系统的整合可以作为通用的BI平台，参考：https://tech.youzan.com/kylin-mondrian-saiku/
 - Dremel：Google 的“交互式”数据分析系统，支持嵌套数据类型的列存储，这个特性是Druid缺少的。
