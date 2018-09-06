@@ -41,7 +41,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - Dremel：Google 的“交互式”数据分析系统，支持嵌套数据类型的列存储，这个特性是Druid缺少的。
 - Drill：Apache Drill 通过开源方式实现了 Google’s Dremel。Apache Drill的架构，整个思想还是通过优化查询引擎，进行快速全表扫描，以快速返回结果。
 - ElasticSearch：Elastic公司推出的一个基于Lucene的分布式搜索服务系统，它是一个高可靠、可扩展、分布式的全文搜索引擎。ES在前几年的定位一直是文本的倒排索引引擎，用于文本搜索的场景。最近几年，Elastic公司将ES用于日志分析和数据的可视化，慢慢转成一个数据分析平台。
-- Kudu：支持快速分析的新型Hadoop存储系统，一般联合Impala的SQL一起使用，[官网](http://kudu.apache.org/)    
+- Kudu：支持快速分析的新型Hadoop存储系统，一般联合Impala的SQL一起使用，[官网](http://kudu.apache.org/)，内存开销较大，速度稍好于Hive。
 ~~- Crate：开源大数据存储，因为Elasticsearch性能实在太出众了，但是dsl接口不好使。有人拿Elasticsearch做为底层，上层封装了一个SQL接口，从何正式变成了一种数据库，叫 http://crate.io~~
 - Splunk：用于机器生成的数据的分析
 
