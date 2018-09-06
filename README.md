@@ -71,6 +71,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - Schedoscope：Hadoop作业敏捷调度的Scala DSL；
 - Sparrow：调度平台
 - Airflow：一个以编程方式编写、调度和监控工作流的平台
+- jobber: 简单的替代cron的工具, [参考1](https://github.com/dshearer/jobber), [参考2](https://dshearer.github.io/jobber/)
 
 ### 系统部署运维
 - Apache Ambari：Hadoop管理的运作框架
