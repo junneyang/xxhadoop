@@ -83,6 +83,12 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - Cloudera HUE：和Hadoop进行交互的Web应用程序
 - Hortonworks HOYA：可在YARN上部署HBase集群的应用
 
+### 监控告警方案
+- 传统方案：StatsD/CollectD + Influxdb/whisper  + Grafana/graphite
+- 主机监控方案（marathon）：node-exporter、prometheus、grafana + alartmanager
+- 主机监控方案（marathon）：node-exporter、prometheus、grafana + alartmanager
+
+
 ### BI与可视化
 - Tableau：商业智能平台	
 - Qilk：商业智能和分析平台
