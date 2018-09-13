@@ -123,6 +123,11 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - IFTTT：IFTTT 是一个被称为 “网络自动化神器” 的创新型互联网服务，它的全称是 If this then that，意思是“如果这样，那么就那样
 - Evrythng：Evrythng则是一款真正意义上的大众物联网平台，使得身边的很多产品变得智能化
 
+### 云计算平台建设
+- 发展理念：大中台、小前台
+- 建设路线：云化、平台化、服务化、一体化、自动化、智能化、场景化
+- 主要方向：采集平台、数据平台、多维分析与BI平台、Web应用微服务平台、调度平台、可视化平台、运维监控平台
+
 ## 参考资料					
 - 数据可视化的开源方案: Superset vs Redash vs Metabase: http://hugoren.iteye.com/blog/2407364					
 - 数据可视化的开源方案: Superset vs Redash vs Metabase (一): https://blog.csdn.net/qirong_onlylove/article/details/79407900					
