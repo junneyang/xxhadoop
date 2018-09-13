@@ -85,7 +85,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 
 ### 监控告警方案
 - 传统方案：StatsD/CollectD + Influxdb/whisper  + Grafana/graphite
-- 主机监控方案（marathon）：node-exporter、prometheus、grafana + alartmanager
+- 容器监控方案（K8S）：Heapster（cAdvisor）+Grafana+InfluxDB/ElasticSearch
 - 主机监控方案（marathon）：node-exporter、prometheus、grafana + alartmanager
 - 采集 cAdvisor, Heapster, collectd, Statsd, Tcollector, Scout
 - 存储 InfluxDb, OpenTSDB, Elasticsearch
