@@ -17,7 +17,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 
 ### 列式数据库
 - HBase
-- Cassandra
+- Cassandra：Facebook开源NoSQL，解决HBase中心节点问题，无中心架构
 - Parquet：Hadoop的列存储格式
 
 ### 时间序列数据库
@@ -60,6 +60,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - Linkedin Gobblin：LinkedIn的通用数据摄取框架
 - StreamSets Data Collector：连续大数据采集的基础设施，可简单地使用IDE
 - Statsd：StatsD 是一个 NodeJs 的 daemon 程序，简单轻巧，使用 UDP 协议，专门用来收集数据，收集完数据就发送到其他服务器进行处理
+- LogDevice：来自Facebook的分布式日志数据存储系统 [参考1](http://www.infoq.com/cn/news/2017/10/LogDevice-Facebook) [参考2](https://github.com/facebookincubator/LogDevice)
 
 ### 任务调度与工作流
 - Spotify Luigi：构建批处理作业的复杂管道的Python包，它能够处理依赖性解析、工作流管理、可视化、故障处理、命令行一体化等等问题
