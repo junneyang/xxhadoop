@@ -72,6 +72,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - Sparrow：调度平台
 - Airflow：一个以编程方式编写、调度和监控工作流的平台
 - jobber: 简单的替代cron的工具, [参考1](https://github.com/dshearer/jobber), [参考2](https://dshearer.github.io/jobber/)
+- schedulix：[参考1](https://github.com/schedulix/schedulix) [参考2](http://www.schedulix.org/en/features)
 
 ### 系统部署运维
 - Apache Ambari：Hadoop管理的运作框架，是一个类似marathon的CS模式的框架，并且可以自定义新的服务。[参考1](https://community.hortonworks.com/questions/96507/devops-tools-used-in-ambari.html) [参考2](https://www.jianshu.com/p/3cbe239a68cb)
