@@ -127,6 +127,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - 发展理念：大中台、小前台
 - 建设路线：云化、平台化、服务化、一体化、自动化、智能化、场景化
 - 主要方向：采集平台、数据平台、多维分析与BI平台、Web应用微服务平台、调度平台、可视化平台、运维监控平台
+- 影响力建设：Confluence-Wiki系统建设、物联网平台计划
 
 ## 参考资料					
 - 数据可视化的开源方案: Superset vs Redash vs Metabase: http://hugoren.iteye.com/blog/2407364					
