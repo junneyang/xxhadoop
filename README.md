@@ -93,6 +93,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - 存储 InfluxDb, OpenTSDB, Elasticsearch
 - 展示 Graphite, Grafana, facette, Cacti, Ganglia, DataDog
 - 告警 Nagios, prometheus, Icinga, Zabbix
+- glances：Glances an Eye on your system. A top/htop alternative [参考1](https://github.com/nicolargo/glances)
 
 ### BI与可视化
 - Tableau：商业智能平台	
