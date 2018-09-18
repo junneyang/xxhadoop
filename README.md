@@ -95,18 +95,18 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - 告警 Nagios, prometheus, Icinga, Zabbix
 - glances：Glances an Eye on your system. A top/htop alternative [参考1](https://github.com/nicolargo/glances)
 - 方案：```
+方案
 收集：statsd/collectd/cadvisor
 缓冲：kafka/logstash
-存储与多维分析：druid/es
+存储与多维分析：druid/es/prometheus
 可视化：grafana
 报表：metabase/superset
+告警：alertmanager
 监控维度
 系统（cpu mem disk net）
 进程
 中间件
-应用
-服务
-API```
+```
 
 ### BI与可视化
 - Tableau：商业智能平台	
