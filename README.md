@@ -77,10 +77,10 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 
 ### 系统部署运维
 - Apache Ambari：Hadoop管理的运作框架，是一个类似marathon的CS模式的框架，并且可以自定义新的服务。[参考1](https://community.hortonworks.com/questions/96507/devops-tools-used-in-ambari.html) [参考2](https://www.jianshu.com/p/3cbe239a68cb)
-- Apache Bigtop：Hadoop生态系统的部署框架
+- Apache Bigtop：Hadoop生态系统的打包、部署框架，依赖puppet的工作流
 - Apache Helix：集群管理框架
 - Apache Slider：一种YARN应用，用来部署YARN中现有的分布式应用程序
-- Brooklyn：用于简化应用程序部署和管理的库
+- Brooklyn：用于简化应用程序部署和管理的库，支持编排、部署、生命周期管理、监控等，Java开发，非常类似Ambari的特性。[参考1](https://brooklyn.apache.org/#get-started) [Docker + Apache Brooklyn = Clocker](https://www.infoq.com/news/2014/06/clocker)
 - Buildoop：基于Groovy语言，和Apache BigTop类似
 - Cloudera HUE：和Hadoop进行交互的Web应用程序
 - Hortonworks HOYA：可在YARN上部署HBase集群的应用
