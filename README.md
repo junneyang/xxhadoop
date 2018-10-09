@@ -98,7 +98,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - glances：Glances an Eye on your system. A top/htop alternative [参考1](https://github.com/nicolargo/glances)
 - 方案：```
 方案
-收集：statsd/collectd/cadvisor
+收集：statsd/collectd/cadvisor/node-exporter
 缓冲：kafka/logstash
 存储与多维分析：druid/es/prometheus
 可视化：grafana
