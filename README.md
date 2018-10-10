@@ -33,6 +33,11 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - 时序分析:    OpenTSDB/InfluxDB/Prometheus
 - 多维分析:    Druid/Kylin
 
+### 文件系统&分布式存储
+- 优秀的 Go 存储开源项目和库：https://www.cnblogs.com/davygeek/p/6399967.html
+- Minio：[Minio is an open source object storage server compatible with Amazon S3 APIs](https://github.com/minio/minio)
+- Torus: [CoreOS Torus Distributed Storage](https://github.com/coreos/torus)
+
 ### 实时分析
 - RDB：MySQL/PostgreSQL/Oracle方案，或者GreenPlum方案。[参考资料](https://yq.aliyun.com/articles/405191)
 - Druid: Druid的很多设计思想来源于Google的秘密分析武器PowerDrill，从功能上，和Apache开源的Dremel也有几分相似。[参考资料](https://www.outlyer.com/blog/top10-open-source-time-series-databases/)
