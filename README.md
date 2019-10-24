@@ -154,6 +154,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - 影响力建设：Confluence-Wiki系统建设、物联网平台计划
 
 ## 参考资料					
+- BigData Ecosystem Dataset:  http://bigdata.andreamostosi.name/    https://github.com/zenkay/bigdata-ecosystem
 - 数据可视化的开源方案: Superset vs Redash vs Metabase: http://hugoren.iteye.com/blog/2407364					
 - 数据可视化的开源方案: Superset vs Redash vs Metabase (一): https://blog.csdn.net/qirong_onlylove/article/details/79407900					
 - 数据可视化的开源方案: Superset vs Redash vs Metabase (二): https://blog.csdn.net/qirong_onlylove/article/details/79407917					
