@@ -84,7 +84,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - JobX：Let's scheduling easy http://www.jobxhub.com
 - metronome: Apache Mesos framework for scheduled jobs https://dcos.github.io/metronome/ https://github.com/ovh/metronome-ui
 - ovh/cds: [Enterprise-Grade Continuous Delivery & DevOps Automation Open Source Platform](https://github.com/ovh/cds)
-- 近期更新： Argo、Airflow、ooize、AZKaban、Luigi、elastic-job、quartz、xxl-job等    
+- 近期更新： Argo、Airflow、ooize、AZKaban、Luigi、elastic-job、quartz、xxl-job、Schedulis等    
 
 ### 系统部署运维
 - Apache Ambari：Hadoop管理的运作框架，是一个类似marathon的CS模式的框架，并且可以自定义新的服务。[参考1](https://community.hortonworks.com/questions/96507/devops-tools-used-in-ambari.html) [参考2](https://www.jianshu.com/p/3cbe239a68cb)
