@@ -49,7 +49,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - Kudu：支持快速分析的新型Hadoop存储系统，一般联合Impala的SQL一起使用，[官网](http://kudu.apache.org/)，内存开销较大，速度稍好于Hive。    
 ~~- Crate：开源大数据存储，因为Elasticsearch性能实在太出众了，但是dsl接口不好使。有人拿Elasticsearch做为底层，上层封装了一个SQL接口，从何正式变成了一种数据库，叫 http://crate.io~~
 - Splunk：用于机器生成的数据的分析
-- 最新OLAP实时分析可选方案列表：ClickHouse、Palo、Doris、Druid、Pinot、CrateDB、TiDB、Kylin等    
+- 最新OLAP实时分析可选方案列表：ClickHouse、Palo、Doris、Druid、Pinot、CrateDB、TiDB、Kylin、GreenPlum等    
     
     
 ### SQL On Hadoop方案
