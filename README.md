@@ -50,6 +50,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 ~~- Crate：开源大数据存储，因为Elasticsearch性能实在太出众了，但是dsl接口不好使。有人拿Elasticsearch做为底层，上层封装了一个SQL接口，从何正式变成了一种数据库，叫 http://crate.io~~
 - Splunk：用于机器生成的数据的分析
 - 最新OLAP实时分析可选方案列表：ClickHouse、Palo、Doris、Druid、Pinot、CrateDB、TiDB、Kylin、GreenPlum等    
+- 阿里云E-MR架构: [参考资料](https://help.aliyun.com/document_detail/28070.html?spm=a2c4g.11186623.6.555.40bd3b8bVIZ31W)
 - Hologres架构回归问题本质: [数据仓库、数据湖、流批一体，终于有大神讲清楚了](https://zhuanlan.zhihu.com/p/141182199?from_voters_page=true)    
     
 ### SQL On Hadoop方案
