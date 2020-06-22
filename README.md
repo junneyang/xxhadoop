@@ -71,6 +71,8 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - Statsd：StatsD 是一个 NodeJs 的 daemon 程序，简单轻巧，使用 UDP 协议，专门用来收集数据，收集完数据就发送到其他服务器进行处理
 - LogDevice：来自Facebook的分布式日志数据存储系统 [参考1](http://www.infoq.com/cn/news/2017/10/LogDevice-Facebook) [参考2](https://github.com/facebookincubator/LogDevice)
 - 调用链跟踪系统方案选型: jaeger pinpoint skywalking zipkin等, [其中grafana支持jaeger，zipkin数据源]()
+- 数据同步最新方案选型：Waterdrop 、LogStash、INSERT SELECT全量(MySQL/Kafka/HDFS)、DataX、Kettle、Sqoop、StreamSets、Altinity/clickhouse-mysql-data-reader、KafkaConnector（Debezium）、Gobblin等方案
+
 
 ### 任务调度与工作流
 - Spotify Luigi：构建批处理作业的复杂管道的Python包，它能够处理依赖性解析、工作流管理、可视化、故障处理、命令行一体化等等问题
