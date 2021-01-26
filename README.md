@@ -140,6 +140,7 @@ Data Analysis Using Hadoop/Spark/Storm/ES/ML etc. This is My Learning Notes/Code
 - PowerBI: 商业智能平台
 - SpagoBI：开源商业智能平台
 - Imply：An interactive data exploration UI for Druid http://pivot.imply.io/
+- 可视化参考资源: https://github.com/thenaturalist/awesome-business-intelligence
 
 ### 可视化
 - Kibana	更偏向可视化；针对ES的数据可视化方案，可查询日志数据、构建仪表盘；既支持检索，又支持数据浏览
