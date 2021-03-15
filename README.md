@@ -73,6 +73,9 @@ Data Analysis Using Hadoop/Spark/Storm/ES/MachineLearning etc. This is My Learni
 - 调用链跟踪系统方案选型: jaeger pinpoint skywalking zipkin等, [其中grafana支持jaeger，zipkin数据源]()
 - 数据同步最新方案选型：Waterdrop 、LogStash、INSERT SELECT全量(MySQL/Kafka/HDFS)、DataX、Kettle、Sqoop、StreamSets、Altinity/clickhouse-mysql-data-reader、KafkaConnector（Debezium）、Gobblin等方案
 
+### 算法与AI
+- 分布式训练：TensorFlow（tf.distribute）、Pytorch（DistributedDataParallel）
+- Horovod（Uber 开发的用于分布式训练的开放源代码 all reduce 框架）, REF: https://github.com/horovod/horovod
 
 ### 任务调度与工作流
 - Spotify Luigi：构建批处理作业的复杂管道的Python包，它能够处理依赖性解析、工作流管理、可视化、故障处理、命令行一体化等等问题
