@@ -1,0 +1,366 @@
+一、MNIST手写体数据集加载&显示
+from tensorflow.keras.datasets import mnist
+# Downloading data from https://s3.amazonaws.com/img-datasets/mnist.npz
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+print(x_train.shape, y_train.shape)
+print(x_test.shape, y_test.shape)
+
+import matplotlib.pyplot as plt
+fig = plt.figure()
+for i in range(15):
+    plt.subplot(3,5,i+1) # 绘制前15个手写体数字，以3行5列子图形式展示
+    plt.tight_layout() # 自动适配子图尺寸
+    plt.imshow(x_train[i], cmap='Greys') # 使用灰色显示像素灰度值
+    plt.title("Label: {}".format(y_train[i])) # 设置标签为子图标题
+    plt.xticks([]) # 删除x轴标记
+    plt.yticks([]) # 删除y轴标记
+plt.imshow(x_train[0], cmap='Greys') # 使用灰色显示像素灰度值
+plt.title("Label: {}".format(y_train[0])) # 设置标签为子图标题
+plt.show()
+
+from tensorflow.keras.utils import np_utils
+n_classes = 10
+print("Shape before one-hot encoding: ", y_train.shape)
+Y_train = np_utils.to_categorical(y_train, n_classes)
+print("Shape after one-hot encoding: ", Y_train.shape)
+Y_test = np_utils.to_categorical(y_test, n_classes)
+print(y_train[0])
+print(Y_train[0])
+
+a = np.array([1,2,3,4,5,6,5,4,3,2,1,8,9,0])
+a.shape
+n_classes = 10
+b = np_utils.to_categorical(a, n_classes)
+print(a)
+print(b)
+
+二、MNIST手写体数字SoftMax网络训练
+from tensorflow.keras.datasets import mnist
+
+# 加载数据集
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+print(x_train.shape, type(x_train))
+print(y_train.shape, type(y_train))
+
+# 规范化数据集
+X_train = x_train.reshape(60000, 784)
+X_test = x_test.reshape(10000, 784)
+print(X_train.shape, type(X_train))
+print(X_test.shape, type(X_test))
+
+# 数据归一化
+print(X_train[0], X_test[0])
+X_train = X_train/255.0
+X_test = X_test/255.0
+print(X_train[0], X_test[0])
+
+# 训练数据统计分析
+import numpy as np
+import matplotlib.pyplot as plt
+
+label, count = np.unique(y_train, return_counts=True)
+print(label, count)
+
+fig = plt.figure()
+plt.bar(label, count, width = 0.7, align='center')
+plt.title("Label Distribution")
+plt.xlabel("Label")
+plt.ylabel("Count")
+plt.xticks(label)
+plt.ylim(0,7500)
+
+for a,b in zip(label, count):
+    plt.text(a, b, '%d' % b, ha='center', va='bottom',fontsize=10)
+
+plt.show()
+
+# 标签one-hot编码
+# from tensorflow.keras.utils import np_utils
+import tensorflow.keras.utils as np_utils
+
+n_classes = 10
+print("Shape before one-hot encoding: ", y_train.shape)
+Y_train = np_utils.to_categorical(y_train, n_classes)
+print("Shape after one-hot encoding: ", Y_train.shape)
+Y_test = np_utils.to_categorical(y_test, n_classes)
+print(y_train[0])
+print(Y_train[0])
+
+# 使用keras sequential model定义SoftMax神经网络（正向传播）
+from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers.core import Dense, Activation
+from tensorflow.keras.layers import Dense, Activation
+
+model = Sequential()
+model.add(Dense(512, input_shape=(784,)))
+model.add(Activation('relu'))                            
+
+model.add(Dense(512))
+model.add(Activation('relu'))
+
+model.add(Dense(10))
+model.add(Activation('softmax'))
+
+model.summary() # 显示模型的架构
+
+# 编译模型（定义优化器、损失函数，即指定反向传播）
+model.compile(loss='categorical_crossentropy', metrics=['accuracy'], optimizer='adam')
+
+# 训练模型，并将指标保存到 history 中
+history = model.fit(X_train,
+                    Y_train,
+                    batch_size=128,
+                    epochs=5,
+                    verbose=2,
+                    validation_data=(X_test, Y_test))
+model.get_weights()
+
+# 指标可视化
+fig = plt.figure()
+plt.subplot(2,1,1)
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Model Accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='lower right')
+
+plt.subplot(2,1,2)
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Model Loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper right')
+plt.tight_layout()
+
+plt.show()
+
+# 保存模型
+import os
+
+save_dir = "./model/"
+os.makedirs(save_dir, exist_ok=True)
+model_name = 'keras_mnist_softmax.h5'
+model_path = os.path.join(save_dir, model_name)
+model.save(model_path)
+print('Saved trained model at %s ' % model_path)
+
+# 加载模型
+# from keras.models import load_model
+from tensorflow.keras.models import load_model
+mnist_model = load_model(model_path)
+mnist_model.summary() # 显示模型的架构
+mnist_model.get_weights()
+
+# 使用模型预测测试集，并统计预测结果
+loss_and_metrics = mnist_model.evaluate(X_test, Y_test, verbose=2)
+    
+print("Test Loss: {}".format(loss_and_metrics[0]))
+print("Test Accuracy: {}%".format(loss_and_metrics[1]*100))
+
+predicted_classes = mnist_model.predict_classes(X_test)
+
+correct_indices = np.nonzero(predicted_classes == y_test)[0]
+incorrect_indices = np.nonzero(predicted_classes != y_test)[0]
+print("Classified correctly count: {}".format(len(correct_indices)))
+print("Classified incorrectly count: {}".format(len(incorrect_indices)))
+
+三、MNIST手写体数字CNN网络训练
+from tensorflow.keras.datasets import mnist
+
+# 加载数据集
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+print(x_train.shape, type(x_train))
+print(y_train.shape, type(y_train))
+
+# 可视化数据集
+import matplotlib.pyplot as plt
+fig = plt.figure()
+for i in range(15):
+    plt.subplot(3,5,i+1) # 绘制前15个手写体数字，以3行5列子图形式展示
+    plt.tight_layout() # 自动适配子图尺寸
+    plt.imshow(x_train[i], cmap='Greys') # 使用灰色显示像素灰度值
+    plt.title("Label: {}".format(y_train[i])) # 设置标签为子图标题
+    plt.xticks([]) # 删除x轴标记
+    plt.yticks([]) # 删除y轴标记
+plt.imshow(x_train[0], cmap='Greys') # 使用灰色显示像素灰度值
+plt.title("Label: {}".format(y_train[0])) # 设置标签为子图标题
+plt.show()
+
+# 规范化数据集
+# from keras import backend as K
+from tensorflow.keras import backend as K
+img_rows, img_cols = 28, 28
+if K.image_data_format() == 'channels_first':
+    x_train = x_train.reshape(x_train.shape[0], 1, img_rows, img_cols)
+    x_test = x_test.reshape(x_test.shape[0], 1, img_rows, img_cols)
+    input_shape = (1, img_rows, img_cols)
+else:
+    x_train = x_train.reshape(x_train.shape[0], img_rows, img_cols, 1)
+    x_test = x_test.reshape(x_test.shape[0], img_rows, img_cols, 1)
+    input_shape = (img_rows, img_cols, 1)
+
+print(x_train.shape, type(x_train))
+print(x_test.shape, type(x_test))
+
+
+# X_train = x_train.reshape(60000, 784)
+# X_test = x_test.reshape(10000, 784)
+# print(X_train.shape, type(X_train))
+# print(X_test.shape, type(X_test))
+
+# 数据归一化
+print(x_train[0], x_test[0])
+X_train = x_train/255.0
+X_test = x_test/255.0
+print(X_train[0], X_test[0])
+
+# 训练数据统计分析
+import numpy as np
+import matplotlib.pyplot as plt
+
+label, count = np.unique(y_train, return_counts=True)
+print(label, count)
+
+fig = plt.figure()
+plt.bar(label, count, width = 0.7, align='center')
+plt.title("Label Distribution")
+plt.xlabel("Label")
+plt.ylabel("Count")
+plt.xticks(label)
+plt.ylim(0,7500)
+
+for a,b in zip(label, count):
+    plt.text(a, b, '%d' % b, ha='center', va='bottom',fontsize=10)
+
+plt.show()
+
+# 标签one-hot编码
+# from tensorflow.keras.utils import np_utils
+import tensorflow.keras.utils as np_utils
+
+n_classes = 10
+print("Shape before one-hot encoding: ", y_train.shape)
+Y_train = np_utils.to_categorical(y_train, n_classes)
+print("Shape after one-hot encoding: ", Y_train.shape)
+Y_test = np_utils.to_categorical(y_test, n_classes)
+print(y_train[0])
+print(Y_train[0])
+
+# 使用keras sequential model定义CNN神经网络（正向传播）
+from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers.core import Dense, Activation
+# from tensorflow.keras.layers import Dense, Activation
+from tensorflow.keras.layers import Dense, Dropout, Flatten
+from tensorflow.keras.layers import Conv2D, MaxPooling2D
+
+model = Sequential()
+## Feature Extraction
+# 第1层卷积，32个3x3的卷积核 ，激活函数使用 relu
+model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu',
+                 input_shape=input_shape))
+# 第2层卷积，64个3x3的卷积核，激活函数使用 relu
+model.add(Conv2D(filters=64, kernel_size=(3, 3), activation='relu'))
+# 最大池化层，池化窗口 2x2
+model.add(MaxPooling2D(pool_size=(2, 2)))
+# Dropout 25% 的输入神经元
+model.add(Dropout(0.25))
+# 将 Pooled feature map 摊平后输入全连接网络
+model.add(Flatten())
+
+## Classification
+# 全联接层
+model.add(Dense(128, activation='relu'))
+# Dropout 50% 的输入神经元
+model.add(Dropout(0.5))
+# 使用 softmax 激活函数做多分类，输出各数字的概率
+model.add(Dense(n_classes, activation='softmax'))
+
+model.summary() # 显示模型的架构
+for layer in model.layers:
+    print(layer.get_output_at(0).get_shape().as_list())
+
+# 编译模型（定义优化器、损失函数，即指定反向传播）
+model.compile(loss='categorical_crossentropy', metrics=['accuracy'], optimizer='adam')
+
+# 训练模型，并将指标保存到 history 中
+history = model.fit(X_train,
+                    Y_train,
+                    batch_size=128,
+                    epochs=5,
+                    verbose=2,
+                    validation_data=(X_test, Y_test))
+model.get_weights()
+
+# 指标可视化
+fig = plt.figure()
+plt.subplot(2,1,1)
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Model Accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='lower right')
+
+plt.subplot(2,1,2)
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Model Loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper right')
+plt.tight_layout()
+
+plt.show()
+
+# 保存模型
+import os
+
+save_dir = "./model/"
+os.makedirs(save_dir, exist_ok=True)
+model_name = 'keras_mnist_cnn.h5'
+model_path = os.path.join(save_dir, model_name)
+model.save(model_path)
+print('Saved trained model at %s ' % model_path)
+
+# 加载模型
+# from keras.models import load_model
+from tensorflow.keras.models import load_model
+mnist_model = load_model(model_path)
+mnist_model.summary() # 显示模型的架构
+mnist_model.get_weights()
+
+# 使用模型预测新数据
+import numpy as np
+
+print(X_test[0].shape)
+result = mnist_model.predict(X_test[0].reshape(1, 28, 28, 1))
+print(np.argmax(result))
+
+# 可视化数据集
+import matplotlib.pyplot as plt
+fig = plt.figure()
+plt.imshow(x_test[0].reshape(28, 28), cmap='Greys')
+plt.title("Label: {}".format(y_test[0])) # 设置标签为子图标题
+plt.xticks([]) # 删除x轴标记
+plt.yticks([]) # 删除y轴标记
+plt.show()
+
+
+# 使用模型预测测试集，并统计预测结果
+loss_and_metrics = mnist_model.evaluate(X_test, Y_test, verbose=2)
+    
+print("Test Loss: {}".format(loss_and_metrics[0]))
+print("Test Accuracy: {}%".format(loss_and_metrics[1]*100))
+
+predicted_classes = mnist_model.predict_classes(X_test)
+
+correct_indices = np.nonzero(predicted_classes == y_test)[0]
+incorrect_indices = np.nonzero(predicted_classes != y_test)[0]
+print("Classified correctly count: {}".format(len(correct_indices)))
+print("Classified incorrectly count: {}".format(len(incorrect_indices)))
+
+参考资料：
+使用Keras Subclassing API和GradientTape编写模型：https://zhuanlan.zhihu.com/p/67960567
+

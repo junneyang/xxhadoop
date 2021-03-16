@@ -1,0 +1,63 @@
+一、Tensor张量使用（可以使用constant、variable、placeholder进行赋值）
+import tensorflow as tf
+tf.constant("Hello, TensorFlow", dtype=tf.string)
+tf.constant([1, 2, 3, 4, 5], dtype=tf.int32)
+tf.Variable([[1, 2], [3, 4]], dtype=tf.int32)
+tf.zeros(shape=(2, 3, 4), dtype=tf.int32)
+tf.constant(0, shape=(2, 3, 4), dtype=tf.int32)
+a = tf.constant(0, shape=(2, 3, 4), dtype=tf.int32)
+tf.rank(a)
+
+二、Variable变量使用（2.X版本之前默认是懒加载，2.X之后是即时加载；
+2.X版本之前使用Saver、之后使用Checkpoint进行变量的存储与恢复操作）
+import tensorflow as tf
+W = tf.Variable(tf.random.normal(shape=[1, 10], mean=0, stddev=1))
+b = tf.Variable(tf.zeros([10]))
+print([W, b])
+b.assign(b + tf.constant(1.0, shape=[10]))
+checkpoint = tf.train.Checkpoint(W=W, b=b)
+checkpoint.save('./demo/demo-model')
+b.assign(b + tf.constant(1.0, shape=[10]))
+print(W, b)
+checkpoint.restore('./demo/demo-model-1')
+print(W, b)
+
+
+import tensorflow as tf
+tf.compat.v1.disable_eager_execution()
+W = tf.Variable(tf.random.normal(shape=[1, 10], mean=0, stddev=1))
+b = tf.Variable(tf.zeros([10]))
+print([W, b])
+sess = tf.compat.v1.Session()
+sess.run(tf.compat.v1.global_variables_initializer())
+sess.run([W, b])
+sess.run(tf.compat.v1.assign(b, b + tf.constant(1.0, shape=[10])))
+saver = tf.compat.v1.train.Saver({'W': W, 'b': b})
+saver.save(sess, './demo/demo-model', global_step=0)
+sess.run(tf.compat.v1.assign(b, b + tf.constant(1.0, shape=[10])))
+saver.restore(sess, './demo/demo-model-0')
+sess.run(b)
+
+三、占位符与操作的使用（2.X版本已经移除了placeholder，使用placeholder定义占位符，使用feed填充占位符）
+import tensorflow as tf
+tf.compat.v1.disable_eager_execution()
+a = tf.constant(123)
+b = tf.constant(456)
+x = tf.compat.v1.placeholder(tf.int16, shape=())
+y = tf.compat.v1.placeholder(tf.int16, shape=())
+add = tf.add(x, y)
+mul = tf.multiply(x, y)
+sess = tf.compat.v1.Session()
+sess.run(add, feed_dict={x: 10, y: 5})
+sess.run(mul, feed_dict={x: 2, y: 3})
+
+四、查看设备列表
+import tensorflow as tf
+tf.config.list_physical_devices()
+
+from tensorflow.python.client import device_lib
+dl = device_lib.list_local_devices()
+print(dl)
+
+import tensorflow as tf
+print([tf.__version__, tf.test.is_gpu_available()])

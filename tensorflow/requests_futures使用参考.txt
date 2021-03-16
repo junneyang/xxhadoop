@@ -1,0 +1,13 @@
+from concurrent.futures import ThreadPoolExecutor
+from requests_futures.sessions import FuturesSession
+from concurrent.futures import as_completed
+
+
+session = FuturesSession(executor=ThreadPoolExecutor(max_workers=10))
+
+futures=[session.post(f'http://httpbin.org/post', json={"name": "helloworld-" + str(i)}, headers={"Content-Type":"application/json"}) for i in range(3)]
+
+for future in as_completed(futures):
+    resp = future.result()
+    print(resp.text)
+

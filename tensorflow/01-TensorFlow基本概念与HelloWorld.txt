@@ -1,0 +1,144 @@
+一、Python环境准备工作
+首先安装 Anaconda，官网：https://www.anaconda.com/。anaconda可用于Python环境的快速创建、隔离、使用。(conda 创建/删除/重命名 环境)
+下载参考：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+下载地址：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+安装后配置如下
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+conda config --show channels
+
+二、TensorFlow开发环境安装与配置
+# 从 TensorFlow 2.1 开始，pip 包 tensorflow 即同时包含 GPU 支持，
+# 无需通过特定的 pip 包 tensorflow-gpu 安装 GPU 版本。
+# 如果对 pip 包的大小敏感，可使用 tensorflow-cpu 包安装仅支持 CPU 的 TensorFlow 版本。
+conda env list                              # 列出虚拟环境
+conda env remove -n tf2                     # 删除已有的虚拟环境
+conda create --name tf2 python=3.6 -y       # “tf2”是你建立的conda虚拟环境的名字
+conda activate tf2                          # 进入名为“tf2”的conda虚拟环境
+conda deactivate                            # 退出虚拟环境
+pip install pip-search                      # https://stackoverflow.com/questions/65307988/error-using-pip-search-pip-search-stopped-working
+pip_search tensorflow
+pip install tensorflow==2.3.0               # 仅支持CPU的版本，tensorflow-gpu同时支持+GPU环境
+
+pip install jupyter_contrib_nbextensions    # notebook代码自动补全
+jupyter contrib nbextension install --user
+# pip install jupyter_nbextensions_configurator
+# jupyter nbextensions_configurator enable --user
+# pip uninstall jedi --yes
+jupyter nbextension enable hinterland/hinterland
+
+
+三、TensorFlow的HelloWorld
+# 数据类型：https://blog.csdn.net/mch2869253130/article/details/89284628
+# 标量、矢量、张量：https://www.jianshu.com/p/6e013e491665
+import tensorflow as tf
+tf.compat.v1.disable_eager_execution()
+hello = tf.constant('Hello, TensorFlow!')
+sess = tf.compat.v1.Session()
+sess.run(hello)
+sess.close()
+--------------------------------------------------------------------------
+import tensorflow as tf
+tf.version.VERSION
+
+import tensorflow as tf
+tf.config.list_physical_devices()
+
+from tensorflow.python.client import device_lib
+dl = device_lib.list_local_devices()
+print(dl)
+
+import tensorflow as tf
+hello = tf.constant('Hello, TensorFlow!')
+print(hello)
+hello.numpy()
+
+A = tf.constant([[1., 2.], [3., 4.]])
+B = tf.constant([[5., 6.], [7., 8.]])
+tf.matmul(A, B) # 计算矩阵A和B的乘积
+
+import tensorflow as tf
+x = tf.Variable(initial_value=3.)
+with tf.GradientTape() as tape:     # 在 tf.GradientTape() 的上下文内，所有计算步骤都会被记录以用于求导
+    y = tf.square(x)
+y_grad = tape.gradient(y, x)        # 计算y关于x的导数
+print(y, y_grad)
+
+X = tf.constant([[1., 2.], [3., 4.]])
+y = tf.constant([[1.], [2.]])
+w = tf.Variable(initial_value=[[1.], [2.]])
+b = tf.Variable(initial_value=1.)
+with tf.GradientTape() as tape:
+    L = tf.reduce_sum(tf.square(tf.matmul(X, w) + b - y))
+w_grad, b_grad = tape.gradient(L, [w, b])        # 计算L(w, b)关于w, b的偏导数
+print(L, w_grad, b_grad)
+--------------------------------------------------------------------------
+import tensorflow.compat.v1 as tf
+tf.disable_eager_execution()
+hello = tf.constant('Hello, TensorFlow!')
+sess = tf.Session()
+sess.run(hello)
+sess.close()
+
+import tensorflow as tf
+tf.compat.v1.disable_eager_execution()
+hello = tf.constant('Hello, TensorFlow!')
+matrix = tf.zeros([6, 8], tf.int32)
+matrix_1 = tf.constant([100, 200, 1, 50, 2, 1000])
+matrix_2 = tf.constant([123, 23454, 54, 6, 657, 5])
+sess = tf.compat.v1.Session()
+sess.run(hello)
+sess.run(matrix)
+sess.run(matrix_1 + matrix_2)
+sess.run(10 * matrix_2)
+sess.run(matrix_1 * matrix_2)
+sess.close()
+
+四、简单线性模型
+Tensorflow 2.0 第一弹 Helloworld：https://zhuanlan.zhihu.com/p/65375582
+机器学习 tensorflow 2 的hello world：https://blog.csdn.net/leon_zeng0/article/details/102714939
+Tensorflow2.0学习（一）Hello World！：https://blog.csdn.net/Shymuel/article/details/98475727
+以简单的线性模型 y = a * X + b 为例，模型与训练代码如下（参考：TensorFlow开发部署示例）
+
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+#定义和编译一个神经网络，最简单的神经网路，1层，1个神经元，一个输入(sharp)
+model = tf.keras.Sequential([keras.layers.Dense(units=1, input_shape=[1])])
+# 编译 并指定 loss optimizer
+model.compile(optimizer='sgd', loss='mean_squared_error')
+#提供数据
+xs = np.array([-1.0, 0.0, 1.0, 2.0, 3.0, 4.0], dtype=float)
+ys = np.array([-2.0, 1.0, 4.0, 7.0, 10.0, 13.0], dtype=float)
+#培训
+model.fit(xs, ys, epochs=500)
+#预测
+print(model.predict([10.0]))
+
+五、使用Jupyter Notebook交互式环境
+pip install jupyter                             # 进入虚拟环境安装jupyter
+python -m ipykernel install --user --name=tf2   # 添加当前虚拟环境到jupyter kernel
+jupyter kernelspec list                         # 查看jupyter已有的kernel环境
+jupyter notebook                                # 打开notebook服务器
+jupyter notebook --notebook-dir=C:\Users\yangj119\Desktop\MLOps参考资料\微软AML
+
+import tensorflow as tf
+tf.version.VERSION
+tf.__version__
+
+六、在Docker环境中快速使用TensorFlow环境
+docker pull tensorflow/tensorflow:2.3.0-jupyter
+docker run -it --rm -v $(realpath ~/notebooks):/tf/notebooks -p 8888:8888 tensorflow/tensorflow:2.3.0-jupyter
+
+
+参考资料：
+书签：使用 TensorFlow 进行分布式训练
+书签：TensorFlow框架入门实战
+Github：https://github.com/DjangoPeng/tensorflow-101
+视频：从零开始学TensorFlow_TensorFlow框架入门实战（https://www.bilibili.com/video/BV194411T7BB?p=18&spm_id_from=pageDriver）
+视频：TensorFlow快速入门与实战（https://time.geekbang.org/course/intro/153）
+视频：TensorFlow 2项目进阶实战（https://time.geekbang.org/course/intro/100053201）
+简单粗暴 TensorFlow 2：https://tf.wiki/zh_hans/
+神经网络浅讲：从神经元到深度学习：https://www.cnblogs.com/subconscious/p/5058741.html#!comments
+
