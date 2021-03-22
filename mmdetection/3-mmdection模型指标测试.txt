@@ -1,0 +1,28 @@
+# VOC 数据集下载（使用2007年数据集）
+# https://pjreddie.com/projects/pascal-voc-dataset-mirror/
+# http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html
+# https://cocodataset.org/
+cd mmdetection
+mkdir data
+
+
+# 下载模型权重
+# https://github.com/open-mmlab/mmdetection/tree/master/configs/pascal_voc
+cd mmdetection
+mkdir -p checkpoints/
+wget http://download.openmmlab.com/mmdetection/v2.0/pascal_voc/faster_rcnn_r50_fpn_1x_voc0712/faster_rcnn_r50_fpn_1x_voc0712_20200624-c9895d40.pth
+
+# Test Faster R-CNN on PASCAL VOC (without saving the test results) and evaluate the mAP. 
+# Config and checkpoint files are available here.
+!cd mmdetection \
+    && /anaconda/envs/open-mmlab/bin/python tools/test.py \
+    configs/pascal_voc/faster_rcnn_r50_fpn_1x_voc0712.py \
+    checkpoints/faster_rcnn_r50_fpn_1x_voc0712_20200624-c9895d40.pth \
+    --show-dir faster_rcnn_r50_fpn_1x_results/ \
+    --eval mAP recall
+
+
+快速删除大文件夹、大文件
+mkdir -p blank
+rsync --delete-before -d blank/ VOCdevkit/
+

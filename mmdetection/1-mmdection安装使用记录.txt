@@ -1,0 +1,82 @@
+# 0、mmdection各组件依赖版本
+# 参考：https://mmdetection.readthedocs.io/en/latest/get_started.html
+Linux or macOS (Windows is in experimental support)
+Python 3.6+：3.7.4
+PyTorch 1.3+：1.4
+CUDA 9.2+ (If you build PyTorch from source, CUDA 9.0 is also compatible):10.1
+GCC 5+
+MMCV
+
+# 1、参考：https://phoenixnap.com/kb/how-to-install-anaconda-ubuntu-18-04-or-20-04
+# curl –O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+bash Anaconda3-2020.02-Linux-x86_64.sh
+
+# 2、Create a conda virtual environment and activate it
+conda create -n open-mmlab python=3.7.4 -y
+conda activate open-mmlab
+
+# 3、Install PyTorch and torchvision following the official instructions
+# https://pytorch.org/get-started/locally/#windows-pip
+conda install pytorch=1.6.0 cudatoolkit=10.1 torchvision==0.7.0 -c pytorch -y
+
+import torch
+x = torch.rand(5, 3)
+print(x)
+import torch
+torch.cuda.is_available()
+
+# 4、Install mmcv-full, we recommend you to install the pre-build package as below
+pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.6.0/index.html
+# pip install mmcv-full==latest+torch1.6.0+cu101 -f https://openmmlab.oss-accelerate.aliyuncs.com/mmcv/dist/index.html
+
+#5、Clone the MMDetection repository.
+sudo apt-get -y install build-essential nghttp2 libnghttp2-dev libssl-dev
+git clone https://github.com/open-mmlab/mmdetection.git
+cd mmdetection
+或者直接下载：wget https://github.com/open-mmlab/mmdetection/archive/v2.10.0.zip
+unzip mmdetection-2.10.0.zip
+mv mmdetection-2.10.0 mmdetection
+
+# 6、Install build requirements and then install MMDetection.
+pip install -r requirements/build.txt
+pip install -v -e .  # or "python setup.py develop"
+
+# 7、通过Docker镜像安装使用
+# 镜像仓库：https://hub.docker.com/search?q=mmdetection&type=image
+# We provide a Dockerfile to build an image. Ensure that you are using docker version >=19.03.
+# build an image with PyTorch 1.6, CUDA 10.1
+docker build -t mmdetection docker/
+docker run --gpus all --shm-size=8g -it -v {DATA_DIR}:/mmdetection/data mmdetection
+
+# 8、验证环境是否安装成功
+import torch
+available_gpus = [torch.cuda.get_device_properties(i) for i in range(torch.cuda.device_count())]
+available_gpus
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+x = torch.tensor([1, 2, 3], device=device)
+print(x)
+
+
+from mmdet.apis import init_detector, inference_detector
+config_file = 'configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py'
+# download the checkpoint from model zoo and put it in `checkpoints/`
+# url: http://download.openmmlab.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth
+checkpoint_file = 'checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth'
+device = 'cuda:0'
+# init a detector
+model = init_detector(config_file, checkpoint_file, device=device)
+# inference the demo image
+inference_detector(model, 'demo/demo.jpg')
+
+# 8、Azure的GPU服务器规格
+规格：Standard_NC6s_v3
+CPU：6核，内存：112G
+GPU：1卡，显存：16G
+
+# nvidia-smi报错的问题
+dkms status
+sudo apt-get install dkms
+sudo dkms install -m nvidia -v 410.78
+nvidia-smi

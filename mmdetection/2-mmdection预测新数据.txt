@@ -1,0 +1,81 @@
+# notebook安装新内核
+# 参考文档：https://docs.microsoft.com/zh-cn/azure/machine-learning/how-to-run-jupyter-notebooks
+conda install pip -y 
+conda install notebook ipykernel -y
+python -m ipykernel install --user --name open-mmlab --display-name "Python (open-mmlab)"
+
+# 下载预训练的模型参数
+cd mmdetection
+mkdir -p checkpoints/
+wget http://download.openmmlab.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth
+conda activate open-mmlab
+
+# 执行代码
+from mmdet.apis import init_detector, inference_detector
+import mmcv
+
+# Specify the path to model config and checkpoint file
+config_file = 'configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py'
+checkpoint_file = 'checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth'
+
+# build the model from a config file and a checkpoint file
+model = init_detector(config_file, checkpoint_file, device='cuda:0')
+
+# test a single image and show the results
+img = 'demo/demo.jpg'  # or img = mmcv.imread(img), which will only load it once
+result = inference_detector(model, img)
+# visualize the results in a new window
+model.show_result(img, result)
+# or save the visualization results to image files
+model.show_result(img, result, out_file='result.jpg')
+
+# test a video and show the results
+video = mmcv.VideoReader('demo/demo.mp4')
+for frame in video:
+    result = inference_detector(model, frame)
+    model.show_result(frame, result, wait_time=1)
+
+# AML的notrbook CPU版本
+from mmdet.apis import init_detector, inference_detector, show_result_pyplot
+import mmcv
+
+# Specify the path to model config and checkpoint file
+config_file = 'mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py'
+checkpoint_file = 'mmdetection/checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth'
+
+# build the model from a config file and a checkpoint file
+# model = init_detector(config_file, checkpoint_file, device='cuda:0')
+model = init_detector(config_file, checkpoint_file, device='cpu')    # 默认GPU改写成CPU
+
+
+
+# test a single image and show the results
+img = 'mmdetection/demo/demo.jpg'  # or img = mmcv.imread(img), which will only load it once
+result = inference_detector(model, img)
+# visualize the results in a new window
+model.show_result(img, result)
+# or save the visualization results to image files
+model.show_result(img, result, out_file='mmdetection/result/result.jpg')
+
+# show the results
+show_result_pyplot(model, img, result)
+
+
+# test a video and show the results
+video = mmcv.VideoReader('mmdetection/demo/demo.mp4')
+total_frame = 0
+for frame in video:
+    result = inference_detector(model, frame)
+    # show the results
+    show_result_pyplot(model, frame, result)
+    model.show_result(frame, result, wait_time=1)
+    total_frame += 1
+print(total_frame)
+
+
+!cd mmdetection \
+    && /anaconda/envs/open-mmlab/bin/python demo/image_demo.py \
+    demo/demo.jpg \
+    configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py \
+    checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth \
+    --device cpu
