@@ -209,3 +209,18 @@ Data Analysis Using Hadoop/Spark/Storm/ES/MachineLearning etc. This is My Learni
 - 使用graphite来监控业务系统：https://www.jianshu.com/p/3d98196c4290
 - 数据同步参考资料（ClickHouse）：Waterdrop 、LogStash、INSERT SELECT全量(MySQL/Kafka/HDFS)、DataX、Kettle、Sqoop、StreamSets、Altinity/clickhouse-mysql-data-reader、KafkaConnector（Debezium）等方案
 - 快手万亿级实时 OLAP 平台的建设与实践(Hive/SparkSQL-->ES-->Druid/Kylin-->ClickHouse): https://www.infoq.cn/article/IWfHmTig_KNAeEJKF8eS
+
+## 规范参考
+
+### Redis使用规范
+- 参考资料：https://developer.aliyun.com/article/531067 https://www.aliyun.com/product/kvstore?spm=5176.19720258.J_8058803260.172.12652c4axakLlV
+- 说明 ```
+0、Redis集群模式：MS主从、Sentinel哨兵、Cluster集群、读写分离、客户端分片等架构
+1、防止Key冲突，推荐使用形如[业务名:表名:ID]格式
+2、防止Key过长，简洁命名减少内存占用，如：user:{uid}可调整为u:{uid}
+3、拒绝BigKeys，string<10K，list、set、hash、zset元素不超过5K
+4、选择合适的数据类型，string、hash、list、set、zset
+5、控制Key的生命周期，防止集中过期
+6、禁止暴力扫描、暴力操作，如KEYS、HGETALL等
+7、分布式锁可以使用ZK实现，集群版Redis理论上不能保证强一致性
+```
