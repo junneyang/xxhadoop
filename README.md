@@ -226,3 +226,32 @@ Data Analysis Using Hadoop/Spark/Storm/ES/MachineLearning etc. This is My Learni
     8、缓存一致性：Cache-Aside（先更新DB/再删除缓存）、延时双删（先删缓存/再更新DB）
     9、注意缓存穿透、击穿、雪崩、热Key问题（HA、预热、限流降级、随机过期、慢查监控）
     ```
+
+### MySQL使用规范
+- 参考资料：https://www.cnblogs.com/huchong/p/10219318.html
+    ```
+    0、统一编码utf8mb4、统一引擎innodb
+    1、单表数据量500W以内（通过归档、分库分表解决大数据）
+    2、减少表宽度（冷热分离、Text/Bob分离）
+    3、数据类型空间优化（如IP转INT存储、无符号数范围）
+    4、所有字段NOT NULL（COUNT、SUM、=会出现非预期结果）
+    5、使用Datetime存储时间（避免使用Timestamp、String）
+    6、财务相关字段使用Decimal实现精准浮点数
+    7、使用Varchar(20)存储手机号
+    8、使用自增字段作为主键
+    9、优先使用联合索引，控制索引数量<5
+    10、索引字段按照区分度高低顺序建立联合索引
+    11、优先使用覆盖索引（包含了SWOG全部字段）
+    12、避免使用外键约束，但关联字段需要使用索引
+    13、使用SQL预编译避免安全问题、提升性能
+    14、禁止使用SELECT*，禁止INSERT不含字段名
+    15、避免JOIN太多表关联与复杂查询
+    16、避免WHERE条件使用函数（如date(create_time) > '20210201'）
+    17、拆分复杂的SQL为多条SQL语句分开执行计算
+    18、100W行以上的操作分批次执行（如INSERT、UPDATE、DELETE操作）
+    19、使用慢查询监控
+    20、使用半同步复制模式，保证事务不丢失
+    21、数据库连接不跨机房，通过RPC调用跨IDC
+    22、避免ALTER TABLE，建议走建新表->数据复制->改表名->删原表的流程
+    23、使用分库分表解决数据写压力；使用读写分离、负载均衡、缓存等解决数据读压力
+    ```
