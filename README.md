@@ -223,4 +223,5 @@ Data Analysis Using Hadoop/Spark/Storm/ES/MachineLearning etc. This is My Learni
     5、控制Key的生命周期，防止集中过期
     6、禁止暴力扫描、暴力操作，如KEYS、HGETALL等
     7、分布式锁可以使用ZK实现，集群版Redis理论上不能保证强一致性
+    8、缓存一致性：Cache-Aside（先更新DB/再删除缓存）、延时双删（先删缓存/再更新DB）
     ```
