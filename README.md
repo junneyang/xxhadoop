@@ -214,7 +214,8 @@ Data Analysis Using Hadoop/Spark/Storm/ES/MachineLearning etc. This is My Learni
 
 ### Redis使用规范
 - 参考资料：https://developer.aliyun.com/article/531067 https://www.aliyun.com/product/kvstore?spm=5176.19720258.J_8058803260.172.12652c4axakLlV
-- 说明 ```
+- 说明 
+```
 0、Redis集群模式：MS主从、Sentinel哨兵、Cluster集群、读写分离、客户端分片等架构
 1、防止Key冲突，推荐使用形如[业务名:表名:ID]格式
 2、防止Key过长，简洁命名减少内存占用，如：user:{uid}可调整为u:{uid}
