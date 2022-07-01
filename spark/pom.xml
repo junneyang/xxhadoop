@@ -15,7 +15,7 @@
 		<spark.version>2.4.7</spark.version>
 		<scala.version>2.11.11</scala.version>
 		<spark.artifact>2.11</spark.artifact>
-		<kafka.artifact>0.10.2.1</kafka.artifact>
+		<kafka.artifact>0.10.2.2</kafka.artifact>
 	</properties>
 
 	<dependencies>
